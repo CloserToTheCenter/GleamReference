@@ -1,15 +1,21 @@
-## I want to... Print Things!
+# I want to Print... 
 
-- **`io.print` `io.println`** a string to *console*.
-- **`io.print_error` `io.println_error`** a string to *standard error*.
-- **`io.debug`** any object, `io.println`ing its representation
+## Arbitrary Objects
+
+Use **`io.debug`** to print an object's representation. This uses the same formatting found in Gleam's error messages.
 
 ```
-io.println("1 2 3")         // -> 1 2 3
-io.debug(list.range(1, 3))  // -> [1, 2, 3]
+io.debug(list.range(1, 3))   // prints -> [1, 2, 3]
 ```
 
-## ... Print Text that I've formatted
+*tangent: `string.inspect` does the formatting, so `io.debug(x)` is equivalent to `io.println(string.inspect(x))`*
+
+## Strings
+
+- **`io.print` `io.println`** to console.
+- **`io.print_error` `io.println_error`** to standard error.
+
+## Format Text
 
 Use **`<>`** to concatenate strings. There is no string interpolation.
 ```
@@ -17,18 +23,11 @@ let name = "Lucy"
 io.println("Hello my name is " <> name <> "!")
 ```
 
-Use **`string.inspect`** to format arbitrary objects.
-```
-// these two are equivalent
-io.debug(foo)   <------>    io.println(string.inspect(foo))
 
-// and with concatenation
-io.println("items: " <> string.inspect(items))
-```
 
-## ... Print Values partway through a pipeline
+## Values Partway through a Pipeline
 
-As they return their original input, io functions are easy to drop into chained pipelines.
+As they return their input unchanged, `io` functions can be added anywhere in an existing pipeline.
 
 ```
 [1, 2]

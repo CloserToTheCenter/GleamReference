@@ -1,9 +1,9 @@
-# I want to...
+# I want to Compare...
 
 - an "ordering" is one of `order.Lt, order.Eq, order.Gt`
 - "compare functions" turn two objects into an "ordering"
 
-## Compare objects
+## Two objects
 
 Use appropiate **`compare`** method for types: `int float string bit_array`
 
@@ -16,7 +16,7 @@ You are encouraged to define comparisons for custom types.
 
 *tangent: you can call `order.to_int`, converting `Lt Eq Gt -> -1 0 1`, or you can compare orders directly with `order.compare`.* 
 
-## Order items increasing
+## Items Increasing
 
 Both `list.sort` and `list.max` take comparisons.
 
@@ -25,7 +25,7 @@ list.sort([4, 1, 2], int.compare)  // -> [1, 2, 4]
 list.max(["a", "z"], string.compare)  // -> "z"
 ```
 
-## Order items decreasing
+## Items Decreasing
 
 **`order.negate`** toggles an order between `Gt` and `Lt`
 

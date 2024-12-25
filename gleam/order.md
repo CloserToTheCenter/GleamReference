@@ -37,7 +37,7 @@ list.max(numbers, order.reverse(int.compare))  // finds the minimum
 
 ## Break ties in ordering
 
-Take two orderings, defaulting to the second if the first is `order.Eq`.
+Takes two orderings, defaults to the second if the first is `order.Eq`.
 
 ```
 break_tie(int.compare(x, y), with: order.Lt)

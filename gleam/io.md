@@ -1,22 +1,23 @@
-# I want to...
+## I want to... Print Things!
 
-## Output text 
+- **`io.print` `io.println`** a string to *console*.
+- **`io.print_error` `io.println_error`** a string to *standard error*.
+- **`io.debug`** any object, `io.println`ing its representation
 
-- **`io.print` `io.println`** a string to console.
-- **`io.print_error` `io.println_error`** a string to standard error.
-- **`io.debug`** takes any object, printing its representation (like `#(0, 1)` for a tuple)
+```
+io.println("1 2 3")         // -> 1 2 3
+io.debug(list.range(1, 3))  // -> [1, 2, 3]
+```
 
-*note: the `ln` suffix denotes "print this on a new line"; `io.debug` always prints to a newline.*
+## ... Print Text that I've formatted
 
-## Format text for printing
-
-Use **`<>`** to concatenate strings.
+Use **`<>`** to concatenate strings. There is no string interpolation.
 ```
 let name = "Lucy"
 io.println("Hello my name is " <> name <> "!")
 ```
 
-Use **`string.inspect`** to format arbitrary objects. These two are equivalent:
+Use **`string.inspect`** to format arbitrary objects.
 ```
 // these two are equivalent
 io.debug(foo)   <------>    io.println(string.inspect(foo))
@@ -25,7 +26,7 @@ io.debug(foo)   <------>    io.println(string.inspect(foo))
 io.println("items: " <> string.inspect(items))
 ```
 
-## View values partway through a pipeline
+## ... Print Values partway through a pipeline
 
 As they return their original input, io functions are easy to drop into chained pipelines.
 

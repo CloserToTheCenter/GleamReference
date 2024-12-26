@@ -1,7 +1,7 @@
 # I want to Compare...
 
 - an "ordering" is one of `order.Lt, order.Eq, order.Gt`
-- "comparisons" turn two objects into an "ordering"
+- a "compare method" turn two objects into an "ordering"
 
 ## Two objects
 
@@ -40,6 +40,6 @@ list.max(numbers, order.reverse(int.compare))  // finds the minimum
 Takes two orderings, defaults to the second if the first is `order.Eq`.
 
 ```
-break_tie(int.compare(x, y), with: order.Lt)
-lazy_break_tie(string.compare(a, b), with: fn() { order.Lt })
+order.break_tie(some_comparison, with: order.Lt)
+order.lazy_break_tie(some_comparison, with: fn() { order.Lt })
 ```

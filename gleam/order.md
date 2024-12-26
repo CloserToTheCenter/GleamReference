@@ -37,9 +37,7 @@ list.max(numbers, order.reverse(int.compare))  // finds the minimum
 
 ## Break ties in ordering
 
-Takes two orderings, defaults to the second if the first is `order.Eq`.
-
-- `order.break_tie(ordering, with: second_ordering)`
+- `order.break_tie(ordering, with: second_ordering)` Defaults to the second ordering if the first is `order.Eq`.
   - `order.lazy_break_tie` special case with the second ordering wrapped in a callback
 
 *tangent: this, and other "lazy" functions with callbacks, make it easy to chain with `use` statements:* 

@@ -9,7 +9,6 @@
 - `set.contains` (some item)
 - `set.size` (how many items)
   - `set.is_empty` (= size is 0)
- 
 - `set.is_disjoint` (these two have nothing in common)
 - `set.is_subset` (this is entirely contained by that)
 

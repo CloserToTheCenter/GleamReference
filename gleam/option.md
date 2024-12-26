@@ -37,7 +37,7 @@ if (optional_val == None) { return None; }   // in procedural language
   - `list.all([Some(1), None])     --> None`
   
 - **`option.values`** Keeps each present value, removing null entries.
-  - `list.values([None, Some("a")])  --> ["a"] 
+  - `list.values([None, Some("a")])  --> ["a"]`
 
 ## (rarely used) Result Conversions
 

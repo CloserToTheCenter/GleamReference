@@ -1,7 +1,7 @@
 # I want to Compare...
 
 - an "ordering" is one of `order.Lt, order.Eq, order.Gt`
-- "compare functions" turn two objects into an "ordering"
+- "comparisons" turn two objects into an "ordering"
 
 ## Two objects
 

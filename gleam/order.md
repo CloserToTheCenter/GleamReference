@@ -39,7 +39,15 @@ list.max(numbers, order.reverse(int.compare))  // finds the minimum
 
 Takes two orderings, defaults to the second if the first is `order.Eq`.
 
+- `order.break_tie(ordering, with: second_ordering)`
+  - `order.lazy_break_tie` special case with the second ordering wrapped in a callback
+
+*tangent: this, and other "lazy" functions with callbacks, make it easy to chain with `use` statements:* 
+
 ```
-order.break_tie(some_comparison, with: order.Lt)
-order.lazy_break_tie(some_comparison, with: fn() { order.Lt })
+fn get_winner(p1, p2) {
+  use <- order.lazy_break_tie(p1.score, p2.score)
+  use <- order.lazy_break_tie(p1.tokens, p2.tokens)
+  use <- order.lazy_break_tie(p1.birthday, p2.birthday)
+}
 ```

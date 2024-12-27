@@ -13,7 +13,7 @@ option.unwrap(   None,           or: 0)   --> 0
 
 Alternate versions (`option.lazy_or`, `option.lazy_unwrap`) wrap the fallback in a callback, evaluating it only when needed.
 
-## Modify Directly
+## Direct Transform
 
 - **`option.map`** Applies a function "undercover", turning `Some(x) -> Some(y)`
 - **`option.flatten`** Condense a stack of nested `Some(Some(..))`

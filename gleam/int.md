@@ -6,7 +6,17 @@ Integers come baked into the language, eg. `3 + 3` and `5 > 3 - 2`. See also [nu
   - Functions, like `int.divide`, have divsion by 0 as an error.
 - Floats use a whole second set of operators, like "+."
 
-## Arithmatic
+## Parse to-and-from Int
+
+- **`parse`** Parses a base 10 string, uses `Result` to indicate success
+- Can cast **`int.to_float`** or **`int.to_string`**.
+
+Gleam supports numeric bases from 2-36:
+- **`int.base_parse`** parses Str -> Int
+- **`int.to_base_string`** parses Int -> Str
+  - special cases: `int.to_base2` `int.to_base8` `int.to_base16` `int.to_base36`
+
+## Arithmetic
 
 Builtin Operators:
 ```
@@ -58,17 +68,6 @@ And related to signs:
 
 - **`int.random`** up through the limit: `random(6)` can give `[0, 1, 2, 3, 4, or 5]`
 - **`int.digits`** **`int.undigits`** split into base 10 digits and back again: `"34" <--> ["3", "4"]`
-
-## Parse to-and-from Int
-
-- **`parse`** Parses a base 10 string, uses `Result` to indicate success
-- Can cast **`int.to_float`** or **`int.to_string`**.
-
-Gleam supports numeric bases from 2-36:
-- **`int.base_parse`** parses Str -> Int
-- **`int.to_base_string`** parses Int -> Str
-  - special cases: `int.to_base2` `int.to_base8` `int.to_base16` `int.to_base36`
-
 
 ## Bitwise Operations
 

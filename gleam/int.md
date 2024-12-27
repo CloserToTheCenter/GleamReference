@@ -8,8 +8,8 @@ Integers come baked into the language, eg. `3 + 3` and `5 > 3 - 2`. See also [nu
 
 ## Parse to-and-from Int
 
-- **`parse`** Parses a base 10 string, uses `Result` to indicate success
-- Can cast **`int.to_float`** or **`int.to_string`**.
+- **`int.parse`** **`int.to_string`** Convert to-and-from `String`.
+- **`int.to_float`** converts to float, convert back with `float.round` or `float.truncate`.
 
 Gleam supports numeric bases from 2-36:
 - **`int.base_parse`** parses Str -> Int
@@ -57,7 +57,7 @@ These operators are covered by:
 - **`int.compare`** yields an ordering (`Lt` `Gt` `Eq`), see [link ordering])
 
 Some functions you would use comparisons to build:
-- **`int.clamp`** between within a range
+- **`int.clamp`** within a range
 - **`int.max`** and **`int.min`** of two distinct ints
 
 And related to signs:

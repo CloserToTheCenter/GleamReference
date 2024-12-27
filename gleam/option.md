@@ -33,11 +33,11 @@ if (optional_val == None) { return None; }   // in procedural language
 ## Query Lists of options
 
 - **`option.all`** Asks "Is this list of options **all** present? Do we have *some* list?"
-  - `list.all([Some(1), Some(2)])  --> Some([1, 2])`
-  - `list.all([Some(1), None])     --> None`
+  - `option.all([Some(1), Some(2)])  --> Some([1, 2])`
+  - `option.all([Some(1), None])     --> None`
   
 - **`option.values`** Keeps each present value, removing null entries.
-  - `list.values([None, Some("a")])  --> ["a"]`
+  - `option.values([None, Some("a")])  --> ["a"]`
 
 ## (rarely used) Result Conversions
 

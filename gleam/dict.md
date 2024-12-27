@@ -4,11 +4,9 @@
 - **`dict.from_list`** (with specific pairs, eg `dicts.from_list([#("a", 1), #("b", 2)])`
   - *convert back with `dict.to_list`*
  
-## Query
+## Check Elements
 - **`dict.get`** giving `Ok(val)` or `Error(Nil)`
 - **`dict.has_key`** giving `True` or `False`
-
-## What's there?
 - **`dict.size`** how many items?
   - `dict.is_empty` (no items?)
 - **`dict.keys`** **`dict.values`** for getting those lists

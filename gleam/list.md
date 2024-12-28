@@ -75,7 +75,6 @@
 - `list.interleave` (take 1 card at a time from alternating piles)
 - `list.intersperse` (like string.join, but with any type)
 - `list.chunk` (by any criteria, grouped into arrays)
-
   - `list.partition` (instead always two groups, for true and false)
   - `list.sized_chunk` (group items by index, ie paginate)
   - `list.group` (instead returns a "dict" with labelled groups)
@@ -106,11 +105,9 @@
 **Fold up a list**
 
 - `list.fold` (combine one element at a time towards a final goal)
-
-- `list.fold_right` (starting at the other end)
-- `list.fold_until` (possibly stopping early)
-- `list.Also` see int.sum for an easy way to add ints
-
+  - `list.fold_right` (starting at the other end)
+  - `list.fold_until` (possibly stopping early)
+  - see `int.sum` for an easy way to add ints*
 - `list.reduce` (no given start, uses first item instead, can error)
 - `list.scan` (returns the intermediate values in a list)
 

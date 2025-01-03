@@ -3,7 +3,8 @@
 ## Format 
 - use string concat operator **`<>`**, or
   - **`string.append`** two strings together
-  - **`string.concat`** many strings together
+  - **`string.join`** many strings together
+    - variant **`string.concat`** has no delimeter
 - **`string.inspect`** to a debuggable format, like what's used by `io.debug`
 
 ## As Components

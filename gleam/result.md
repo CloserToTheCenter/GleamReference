@@ -41,15 +41,7 @@ For getting the `Error` message, instead of defaulting on `Errors`, the followin
   - `result.unwrap_both` extracts every message, whether on an `Ok` or an `Error`
 
 
-## Bulk Processing
-- **`result.all`** Asks "Are these all okay? Do we have an `Ok` list?"
-  - `result.all([Ok(1), Ok(2)])      --> Ok([1, 2])`
-  - `result.all([Ok(1), Error(Nil)]) --> None`
-- **`result.values`** Keeps each okay value, removing errors.
-  - `result.values([Error(Nil), Ok("a")])  --> ["a"]`
-- **`result.partition`** Splits to two unwrapped lists: "okay values" and "error messages".
-
-## (rarely used) Direct Transform 
+## Operate On 
   
 - **`result.replace_error`** Updates an error message, ignoring Okays.
   - `result.replace` Updates an okay value, ignoring Errors.
@@ -58,6 +50,15 @@ For getting the `Error` message, instead of defaulting on `Errors`, the followin
 **`result.map_error`** and **`result.map`** work similar to `replace/replace_error`, except they provide a tranformation function rather than a direct replacement value.
 
 *"rarely used" due to the principle of "sanitize early": often there's a way to `unwrap` into normal values before you would have to call these.* 
+
+## Operate in Bulk
+- **`result.all`** Asks "Are these all okay? Do we have an `Ok` list?"
+  - `result.all([Ok(1), Ok(2)])      --> Ok([1, 2])`
+  - `result.all([Ok(1), Error(Nil)]) --> None`
+- **`result.values`** Keeps each okay value, removing errors.
+  - `result.values([Error(Nil), Ok("a")])  --> ["a"]`
+- **`result.partition`** Splits to two unwrapped lists: "okay values" and "error messages".
+
 
 ## (rarely used) Direct Checks
 

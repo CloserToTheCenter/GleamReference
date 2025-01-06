@@ -113,11 +113,11 @@
 
 **With indices visible as I go**
 
-- `list.index_fold` / index_map (the provided function sees each value in a tuple with its index)
+- `list.index_fold` / `index_map` (the provided function sees each value in a tuple with its index)
 
 **Handling errors as I go**
 
-- `list.try_each` / try_fold / try_map (each step returns a result; on error the process aborts)
+- `list.try_each` / `try_fold` / `try_map` (each step returns a result; on error the process aborts)
 
 **Combining two list utilities into one**
 

@@ -9,11 +9,11 @@
 
 ## As Components
 - **`string.to_graphemes`** or **`string.pop_grapheme`** to iterate one "character" at a time.
-- **`string.split`** / **`string.join`** {split on / rejoin on} a delimeter
-  - **`string.split_once`** special case, split on the first ocurrence of..
-  - **`string.concat`** special case with no delimiter
+- **`string.split`** or **`string.join`** on a delimeter
+  - **`string.split_once`** special case, on first occurence, returns at most 2 parts
+  - **`string.concat`** special case, no delimeter
 
-**checking length**
+**check length**
 - **`string.length`** number of graphemes
 - **`string.byte_size`** number of bytes
 
@@ -27,16 +27,16 @@
 - **`string.starts_with`** **`string.ends_with`** checks substring prefix/suffix
 
 ## Substring Based
-- **`string.contains`** has some
-- **`string.crop`** remove up until
-- **`string.replace`** all occurences of one with another
-- **`string.slice`** extract by index
+- **`string.contains`** has some substring
+- **`string.crop`** remove up until substring
+- **`string.replace`** all occurences of one substring with another
+- **`string.slice`** extract a substring between indices
  
-## Modify Ends
+## Transform
 **modify ends**
 - **`string.drop_start`** **`string.drop_end`** drop *n* graphemes from the {start/end}
-- **`string.pad_end`** **`string.pad_start`** add extra to hit a fixed length
-- **`string.trim`** **`string.trim_start`** **`string.trim_end`** trim whitespace from {both/start/end}
+- **`string.pad_start`** **`string.pad_end`** add extra to hit a fixed length
+- **`string.trim_start`** **`string.trim_end`** trim whitespace from {start/end}, or **`string.trim`** both
 
 *the "start" and "end" functons here have deprecated versions: `string.drop_left` `string.drop_right` `string.pad_left` `string.pad_right` `string.trim_left` `string.trim_right`*
 
@@ -44,7 +44,7 @@
 - **`string.repeat`** repeat x times
 - **`string.reverse`** flip it!
 
-## Capitalization
+**capitalization**
 - **`string.capitalise`** Uppercases the first grapheme in the string
 - **`string.lowercase`** lowercases the string
 - **`string.uppercase`** UPPERCASES THE STRING

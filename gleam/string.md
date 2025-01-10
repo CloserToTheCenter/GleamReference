@@ -8,10 +8,13 @@
 - **`string.inspect`** to a debuggable format, like what's used by `io.debug`
 
 ## As Components
+- Iterate through with pattern matching
+  ```
+  case text {
+    "" -> done
+    leading <> rest -> 
+  }
 - **`string.to_graphemes`** or **`string.pop_grapheme`** to iterate one "character" at a time.
-- **`string.split`** or **`string.join`** on a delimeter
-  - **`string.split_once`** special case, on first occurence, returns at most 2 parts
-  - **`string.concat`** special case, no delimeter
 
 **check length**
 - **`string.length`** number of graphemes
@@ -25,6 +28,11 @@
 ## What's at either end?
 - **`string.first`** **`string.last`** gets a grapheme, or errors on empty string
 - **`string.starts_with`** **`string.ends_with`** checks substring prefix/suffix
+
+## Split and (re-)Join
+- **`string.split`** or **`string.join`** on a delimeter
+  - **`string.split_once`** special case, on first occurence, returns at most 2 parts
+  - **`string.concat`** special case, no delimeter
 
 ## Substring Based
 - **`string.contains`** has some substring

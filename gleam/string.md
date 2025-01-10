@@ -7,13 +7,11 @@
     - variant **`string.concat`** has no delimeter
 - **`string.inspect`** to a debuggable format, like what's used by `io.debug`
 
-## As Components
-- Iterate through with pattern matching
-  ```
-  case text {
-    "" -> done
-    leading <> rest -> 
-  }
+## Conversions
+- `int.parse` or the other int functions, see [link]
+- `bit_array.from_string` and `bit_array.to_string` for working directly with bits
+
+## Iteration
 - **`string.to_graphemes`** or **`string.pop_grapheme`** to iterate one "character" at a time.
 
 **check length**
@@ -56,6 +54,7 @@
 - **`string.capitalise`** Uppercases the first grapheme in the string
 - **`string.lowercase`** lowercases the string
 - **`string.uppercase`** UPPERCASES THE STRING
+
 
 ## Alphabetical Order
 - **`string.compare`** and in use `list.sort(items, string.compare)`

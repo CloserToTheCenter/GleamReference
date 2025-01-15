@@ -2,7 +2,7 @@
 
 Integers come baked into the language, eg. `3 + 3` and `5 > 3 - 2`. See also [number formats].
 
-- For operators, like (`/`, `./`, `%`), dividing by 0 yields 0 to keep it simple.
+- For operators, like (`/`, `/.`, `%`), dividing by 0 yields 0 to keep it simple.
   - Functions, like `int.divide`, have divsion by 0 as an error.
 - Floats use a whole second set of operators, like "+."
 

@@ -13,7 +13,7 @@ ask the Gleam community for help.*
 **`result.try`** / **`result.then`** Short-circuit on error, otherwise run a continuation. Both names refer to the same function:
 - *Special Case: `result.try_recover` lets you see a potential error value*
   
-```
+```Gleam
 // "result.try" intended for use statement
 use val <- result.try(operation_that_might_fail())
 next_step(val)
@@ -28,8 +28,8 @@ These functions internally call **`result.flatten`**, condensing a stack of nest
 
 ## Default on Error
 
-```
-         this if okay  ~ or ~> default
+```Gleam
+//          this if okay  ~ or ~> default
 result.unwrap(  Ok(5),       or:    0 )   --> 5
 result.or( Error(Nil),       or: Ok(0))   --> Ok(0)
 ```
@@ -71,7 +71,7 @@ Gleam has two functions for classifying results directly, but they are less freq
 
 Prefer pattern matching for routing results:
 
-```
+```Gleam
 case outcome {
   Ok(val) -> todo
   Error(_) -> todo

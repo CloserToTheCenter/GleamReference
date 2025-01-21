@@ -9,21 +9,15 @@
 **Custom Types -over- boolean flags**
 
 ```Gleam
-Account(role: Teacher)           // yay! good!
-Account(is_teacher: Bool, ...)   // woah there  
+Account(role: Teacher)           // prefered over "is_teacher: Bool"
 ```
 
 **Pattern Matching -over- explicit equality**
 
 ```Gleam
-case eggs {             // yay! good!
+case eggs {             // preferred over "case eggs == 12 { ... }"
   12 -> "full dozen"
   _ -> "not quite"
-}
-
-case eggs == 12 {       // woah there
-  True -> "full dozen"
-  False -> "not quite"
 }
 ```
 

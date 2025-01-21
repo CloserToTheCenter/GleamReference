@@ -11,8 +11,7 @@ ask the Gleam community for help.*
 ## Exit on Error
 
 **`result.try`** / **`result.then`** Short-circuit on error, otherwise run a continuation. Both names refer to the same function:
-- *Special Case: `result.try_recover` lets you see a potential error value*
-  
+
 ```Gleam
 // "result.try" intended for use statement
 use val <- result.try(operation_that_might_fail())
@@ -22,6 +21,8 @@ next_step(val)
 operation_that_might_fail()
 |> result.then(next_step)
 ```
+
+- *Special Case: `result.try_recover` lets you see a potential error value*
 
 These functions internally call **`result.flatten`**, condensing a stack of nested `Ok(Ok(foo))` to just `Ok(foo)`. Otherwise the result layers would pile up when chaining them together. 
  

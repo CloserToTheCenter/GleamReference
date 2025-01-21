@@ -2,9 +2,9 @@
 
 A `Result` is the outcome of a function call, either `Ok(value)` if it went smoothly or `Error(Nil)` / `Error(Message)` otherwise.
 
-*tanget: It's okay to `panic` or `assert` in a scrappy Gleam script, but when writing a library for many people to use, 
+*tangent: It's okay to `panic` or `assert` in a scrappy Gleam script, but when writing a library for many people to use, 
 it is strongly encouraged to indicate errors in calling functions with the proper `Result`. If this seems hard to manage,
-ask the Gleam community for help.`*
+ask the Gleam community for help.*
 
 *tangent: Most of the time, you want `Error(Nil)` with no message.*
 
@@ -34,11 +34,13 @@ result.or( Error(Nil),       or: Ok(0))   --> Ok(0)
 - **`result.unwrap`** gets the direct interior value (say `5`).
 - **`result.or`** picks one of two results to return
 
+If you start to chain these, consider getting the first "okay" item of several with: `|> list.find(result.is_okay)`
+
 Alternate versions (`option.lazy_or`, `option.lazy_unwrap`) wrap the fallback in a callback, evaluating it only when needed.
 
 For getting the `Error` message, instead of defaulting on `Errors`, the following can be used:
-  - `result.unwrap_error` gets only "Error" messages, skipping rest
-  - `result.unwrap_both` extracts every message, whether on an `Ok` or an `Error`
+  - `result.unwrap_error` gets only the "Error" message
+  - `result.unwrap_both` extracts either message, whether on an `Ok` or an `Error`
 
 
 ## Operate On 
@@ -54,17 +56,17 @@ For getting the `Error` message, instead of defaulting on `Errors`, the followin
 ## Operate in Bulk
 - **`result.all`** Asks "Are these all okay? Do we have an `Ok` list?"
   - `result.all([Ok(1), Ok(2)])      --> Ok([1, 2])`
-  - `result.all([Ok(1), Error(Nil)]) --> None`
+  - `result.all([Ok(1), Error(Nil)]) --> Error(Nil)`
 - **`result.values`** Keeps each okay value, removing errors.
   - `result.values([Error(Nil), Ok("a")])  --> ["a"]`
 - **`result.partition`** Splits to two unwrapped lists: "okay values" and "error messages".
 
 
-## (rarely used) Direct Checks
+## Check Directly
 
-You *could* check fields with `result.is_error` and `result.is_okay`. 
+Gleam has two functions for classifying results directly, but they are less frequently used.
 
-Instead prefer other builtins, and when there's no good builtin, use pattern matching:
+Prefer pattern matching for routing results:
 
 ```
 case outcome {
@@ -72,3 +74,11 @@ case outcome {
   Error(_) -> todo
 }
 ```
+
+Prefer using other builtins, like `result.values` rather than calling `list.filter(result.is_ok) |> list.map(...)`, or `result.try` over something with `bool.guard`.
+
+If you still need them, you can call or pass along the functions **`result.is_ok`** and **`result.is_error`**.
+
+
+
+

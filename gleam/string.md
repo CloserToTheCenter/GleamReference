@@ -8,7 +8,7 @@
 - **`string.inspect`** to a debuggable format, like what's used by `io.debug`
 
 ## Conversions
-- `int.parse` or the other int functions, see [link]
+- `int.parse` or the other int functions, see [link](https://github.com/CloserToTheCenter/GleamReference/blob/main/gleam/int.md#parse-to-and-from-int)
 - `bit_array.from_string` and `bit_array.to_string` for working directly with bits
 
 ## Iteration
@@ -44,7 +44,7 @@
 - **`string.pad_start`** **`string.pad_end`** add extra to hit a fixed length
 - **`string.trim_start`** **`string.trim_end`** trim whitespace from {start/end}, or **`string.trim`** both
 
-*the "start" and "end" functons here have deprecated versions: `string.drop_left` `string.drop_right` `string.pad_left` `string.pad_right` `string.trim_left` `string.trim_right`*
+*the "start" and "end" functons here have deprecated versions, listed for searchability: `string.drop_left` `string.drop_right` `string.pad_left` `string.pad_right` `string.trim_left` `string.trim_right`*
 
 **generally**
 - **`string.repeat`** repeat x times
@@ -55,6 +55,5 @@
 - **`string.lowercase`** lowercases the string
 - **`string.uppercase`** UPPERCASES THE STRING
 
-
 ## Alphabetical Order
-- **`string.compare`** and in use `list.sort(items, string.compare)`
+- `string.compare` and in use **`list.sort(items, string.compare)`**

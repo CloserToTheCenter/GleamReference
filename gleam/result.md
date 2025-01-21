@@ -8,22 +8,25 @@ ask the Gleam community for help.*
 
 *tangent: Most of the time, you want `Error(Nil)` with no message.*
 
-## Early Return
-- **`result.try`** early-exit on an error, otherwise run a callback. Often called with `use`.
-  - `result.then` is an alias, the name sounds better inline than "try"
-  - `result.try_recover` special case, lets you see any potential error value
-  - **`result.flatten`** Condense a stack of nested `Ok(Ok(..))`, done for you by `try/then`
- 
+## Exit on Error
+
+**`result.try`** / **`result.then`** Short-circuit on error, otherwise run a continuation. Both names refer to the same function:
+- *Special Case: `result.try_recover` lets you see a potential error value*
+  
 ```
+// "result.try" intended for use statement
 use val <- result.try(operation_that_might_fail())
-perform_validation(val)
-```
-```
+next_step(val)
+
+// "result.then" intended for inline use 
 operation_that_might_fail()
-|> result.then(perform_validation)
+|> result.then(next_step)
 ```
 
-## Extract some value
+These functions internally call **`result.flatten`**, condensing a stack of nested `Ok(Ok(foo))` to just `Ok(foo)`. Otherwise the result layers would pile up when chaining them together. 
+ 
+
+## Default on Error
 
 ```
          this if okay  ~ or ~> default
@@ -42,24 +45,24 @@ For getting the `Error` message, instead of defaulting on `Errors`, the followin
   - `result.unwrap_error` gets only the "Error" message
   - `result.unwrap_both` extracts either message, whether on an `Ok` or an `Error`
 
+## Bulk Unwraps
 
-## Operate On 
-  
-- **`result.replace_error`** Updates an error message, ignoring Okays.
-  - `result.replace` Updates an okay value, ignoring Errors.
-  - `result.nil_error` Deprecated, special case of `|> result.replace_error(Nil)`
- 
-**`result.map_error`** and **`result.map`** work similar to `replace/replace_error`, except they provide a tranformation function rather than a direct replacement value.
-
-*"rarely used" due to the principle of "sanitize early": often there's a way to `unwrap` into normal values before you would have to call these.* 
-
-## Operate in Bulk
 - **`result.all`** Asks "Are these all okay? Do we have an `Ok` list?"
   - `result.all([Ok(1), Ok(2)])      --> Ok([1, 2])`
   - `result.all([Ok(1), Error(Nil)]) --> Error(Nil)`
 - **`result.values`** Keeps each okay value, removing errors.
   - `result.values([Error(Nil), Ok("a")])  --> ["a"]`
 - **`result.partition`** Splits to two unwrapped lists: "okay values" and "error messages".
+
+## Edit in Place
+
+*Often these can be avoided by "sanitizing early": unwrapping to either values or error messages before continuing. * 
+
+- **`result.replace_error`** Updates an error message, ignoring Okays.
+  - `result.replace` Updates an okay value, ignoring Errors.
+  - `result.nil_error` Deprecated, special case of `|> result.replace_error(Nil)`
+ 
+**`result.map_error`** and **`result.map`** work similar to `result.replace_error`, except transform via a function, rather than replacing directly with a value.
 
 
 ## Check Directly

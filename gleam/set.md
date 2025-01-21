@@ -6,7 +6,7 @@
 
 These support two patterns of initialization:
 
-```
+```Gleam
 // build the list first
 let plates = cars |> list.map(fn (car) { car.plate_number }) |> set.from_list
 

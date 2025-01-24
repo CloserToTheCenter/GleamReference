@@ -12,7 +12,9 @@
 
 ## Target Audience
 - You are comfortable with recursion.
-- You've taken the Gleam tour already.
+- You've taken the Gleam tour already, especially:
+  - [The Case Statement and Pattern Matching](https://tour.gleam.run/flow-control/case-expressions/)
+  - [Functions, especially with tail-call recursion](https://tour.gleam.run/flow-control/tail-calls/)
 - You have a good guess what these functions do:
   - `print`, `println`, `console.write`
   - `list.map`, `list.filter`

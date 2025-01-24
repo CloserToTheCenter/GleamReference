@@ -98,9 +98,9 @@
 ## Transform a list with an external function:
 **For each element...**
 
-- `list.filter` (accept or reject)
-- `list.map` (transform to a new value)
-- `list.each` (launch some other function)
+- **`list.filter`** (accept or reject)
+- **`list.map`** (transform to a new value)
+- **`list.each`** (launch some other function)
 
 **Fold up a list**
 
@@ -127,9 +127,9 @@
 - `list.flat_map` (map then flatten)
 - `list.pop_map` (map then pop)
 
-**Key Based (for Erlang interop mostly)**
+**Key Based**
 
-All of these operate on a list of #(key, val) tuples.
+All of these operate on a list of #(key, val) tuples. These are useful for Erlang interop, and to enable pattern matching.
 
 - `list.key_filter` (all vals where key function matches)
 - `list.key_find` (first val where key matches)

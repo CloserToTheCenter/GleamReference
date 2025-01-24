@@ -7,7 +7,7 @@ Floats come with the language, eg. `1.5 +. 1.5` and `5.0 >. 3.13`.
 - Float operators all have trailing dots like "+."
 
 ## Parsing
-- **`float.parse`** **`float.to_string`** convert back-and-forth say `1.23 <--> "1.23"`
+- **`float.parse`** **`float.to_string`** convert back-and-forth say `1.23 <--> "1.23"`, the parsing can error
 
 ## Arithmetic
 
@@ -30,9 +30,9 @@ Generally, prefer builtin "dot" operators like `+.` and `>.`
 ## Constrain
 - **`float.clamp`** within a range
 - **`float.ceiling`** **`float.floor`** Move to the nearest whole-number float.
-   - `float.truncate` removes all decimals (similar to "floor" on positive numbers and "ceiling" on negative ones)
    - `float.to_precision` Round to some significant decimal place.
-- **`float.round`** returns an int (`x.5` rounds up)
+- **`float.truncate`** returns an int with decimals truncated (similar to "floor" on positive numbers and "ceiling" on negative ones)
+- **`float.round`** returns an int, with `x.5` rounding up
 
 ## Misc
 - **`float.absolute_value`** remove sign

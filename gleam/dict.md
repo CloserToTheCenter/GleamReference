@@ -6,7 +6,7 @@
 - **`dict.from_list`** with specific pairs, eg `dicts.from_list([#("a", 1), #("b", 2)])`
   - *convert back with `dict.to_list`*
 
-Like Gleam sets, two patterns of initialization:
+Like Gleam sets, these support two patterns of initialization:
 
 ```Gleam
 // build the list first
@@ -27,7 +27,7 @@ list.fold(cars, dict.new(), fn(acc, car) {
 
 ## Modify at some specific key
 - **`dict.insert`** overwrites with a new value
-- **`dict.upsert`** applies a function to a value, overwriting it with the result
+- **`dict.upsert`** applies a function to a value, overwriting it with the updated result
 - **`dict.delete`** removes kv pair
 
 ## Remove Multiple
@@ -39,12 +39,12 @@ list.fold(cars, dict.new(), fn(acc, car) {
 - **`dict.merge`** add items from one dict to another, "end-to-end"
 - **`dict.combine`** combine values with some function, "key-to-matching-key"
 
-## Iterate On
+## Iterate Through
 - **`dict.map_values`** update each value in a dict, based on current key and value
   - `dict.each` special case, discarding the return value
 - **`dict.fold`** accumulates each pair into a final result
 
-## Use a List of tuples as a Dict
+## Use a List-of-Tuples as a Dict
 
 These perform dictionary related functions, operating directly on lists of #(key, val) tuples:
 

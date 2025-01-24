@@ -30,13 +30,13 @@ Generally, prefer builtin "dot" operators like `+.` and `>.`
 ## Constrain
 - **`float.clamp`** within a range
 - **`float.ceiling`** **`float.floor`** Move to the nearest whole-number float.
-   - **`float.truncate`** removes all decimals (similar to "floor" on positive numbers and "ceiling" on negative ones)
-   - **`float.to_precision`** Round to some significant decimal place.
+   - `float.truncate` removes all decimals (similar to "floor" on positive numbers and "ceiling" on negative ones)
+   - `float.to_precision` Round to some significant decimal place.
 - **`float.round`** Returns an int, `x.5` rounds up.
 
 ## Misc
 - **`float.absolute_value`** remove sign
-- **`float.negate`** flip fign
+- **`float.negate`** flip sign
 - **`float.random`** an even distribution from zero up through (but not including) one
 
 

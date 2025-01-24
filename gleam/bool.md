@@ -44,7 +44,7 @@ or the `bool.negate` function.
 
 **`bool.guard`** is a form of ternary if, used for early returns.
 
-Based on a condition, guards returns 1 of 2 values, either:
+Based on a condition guards returns 1 of 2 values, either:
 - an early return value 
 - the result of executing the "rest" of the function
 
@@ -56,7 +56,7 @@ use <- bool.guard(when: condition, return: 0)
 if (condition) { return 0; }
 ```
 
-The `lazy_guard`, who is lazy in some ways but not others,
+The `bool.lazy_guard`, who is lazy in some ways but not others,
 guards both paths from early execution, not just the continuation.
 
 ## Conversions

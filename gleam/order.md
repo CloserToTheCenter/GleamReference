@@ -1,11 +1,16 @@
 # I want to Compare...
 
-A "compare" method has three possible outcomes:
+A "compare" method has three outcomes: Less Than, Equal, and Greater Than
 ```
 case int.compare(guess, secret) { 
-  order.Lt -> "You guessed too low."   
+  order.Lt -> "Guessed low."   
   order.Eq -> "That's correct!"
-  order.Gt -> "You guessed too high."
+  order.Gt -> "Guessed high."
+}
+
+case int.compare(speed, speed_limit) {
+  order.Lt | order.Eq -> "Okay."
+  ordre.Gt -> "Please slow down."
 }
 ```
 

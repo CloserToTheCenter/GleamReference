@@ -1,6 +1,6 @@
 ## Built Ins
 
-Integers come baked into the language, eg. `3 + 3` and `5 > 3 - 2`. See also [number formats].
+Integers come baked into the language, eg. `3 + 3` and `5 > 3 - 2`.
 
 - For operators, like (`/`, `/.`, `%`), dividing by 0 yields 0 to keep it simple.
   - Functions, like `int.divide`, have divsion by 0 as an error.
@@ -8,8 +8,8 @@ Integers come baked into the language, eg. `3 + 3` and `5 > 3 - 2`. See also [nu
 
 ## Parse to-and-from Int
 
-- **`int.parse`** **`int.to_string`** Convert to-and-from `String`.
-- **`int.to_float`** converts to float, convert back with `float.round` or `float.truncate`.
+- **`int.parse`** **`int.to_string`** Convert back-and-forth say `12 <--> "12"`, the parsing can error.
+- **`int.to_float`** Converts to float, convert back with `float.round` or `float.truncate`.
 
 Gleam supports numeric bases from 2-36:
 - **`int.base_parse`** parses Str -> Int
@@ -34,15 +34,10 @@ Some corresponding functions:
 - `int.subtract`
 - `int.divide` and `int.floor_divide` which indicate division by zero with an `Error`
   -  `int.floor_divide` rounds towards negative infinity instead of zero
-- `int.modulo` or its alias `int.remainder`, which again indicate division by zero with a potential `Error`
+- `int.modulo` or its alias `int.remainder`, which again indicates division by zero with a potential `Error`
   - **`int.is_even`** and **`int.is_odd`** as shorthand 
 - **`int.power`** raise an int to a float, `Error`s for complex results, otherwise `Ok(float)`
   - **`int.square_root`** special case
-
-These functions can be curied and piped around easier,
-```
-list.map(items, int.add(_, 1))
-```
 
 ## Comparisons
 
@@ -54,7 +49,7 @@ a == b      a != b
 ```
 
 These operators are covered by:
-- **`int.compare`** yields an ordering (`Lt` `Gt` `Eq`), see [link ordering])
+- **`int.compare`** yields an [ordering](https://github.com/CloserToTheCenter/GleamReference/blob/main/gleam/order.md) (`Lt` `Gt` `Eq`)
 
 Some functions you would use comparisons to build:
 - **`int.clamp`** within a range

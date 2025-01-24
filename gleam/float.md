@@ -3,11 +3,11 @@
 Floats come with the language, eg. `1.5 +. 1.5` and `5.0 >. 3.13`.
 
 - For operators, like (`/`, `/.`, `%.`), dividing by 0 yields 0 to keep it simple.
-  - Functions, like `int.divide`, have divsion by 0 as an Error.
+  - Functions, like `float.divide`, have divsion by 0 as an Error.
 - Float operators all have trailing dots like "+."
 
 ## Parsing
-- **`float.parse`** **`float.to_string`** Convert to-and-from `String`.
+- **`float.parse`** **`float.to_string`** convert back-and-forth say `1.23 <--> "1.23"`
 
 ## Arithmetic
 
@@ -32,12 +32,12 @@ Generally, prefer builtin "dot" operators like `+.` and `>.`
 - **`float.ceiling`** **`float.floor`** Move to the nearest whole-number float.
    - `float.truncate` removes all decimals (similar to "floor" on positive numbers and "ceiling" on negative ones)
    - `float.to_precision` Round to some significant decimal place.
-- **`float.round`** Returns an int, `x.5` rounds up.
+- **`float.round`** returns an int (`x.5` rounds up)
 
 ## Misc
 - **`float.absolute_value`** remove sign
 - **`float.negate`** flip sign
-- **`float.random`** an even distribution from zero up through (but not including) one
+- **`float.random`** An even distribution from zero up through (but not including) one.
 
 
 

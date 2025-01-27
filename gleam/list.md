@@ -1,36 +1,37 @@
+
+*Gleam lists are linked lists:*
+- *Prefixing is cheaper than postfixing. One idiom: prefix many times, then reverse at the end.*
+- *There's no lookup by index. You can write one but it will be slow. Dictionaries are better for lookups.*
+- *The benefits: everything immutable AND cheap to split of leading elements with pattern matching.*  
+
 ## Have some items:
 
 **Make new lists**
 
-- static declaration, eg. `let items = [1, 2, 3]`
-  - `list.new` (list with no items)
-  - `list.wrap` (list with one item)
-- `list.range` (inclusive, eg. `list.range(1, 3) --> [1, 2, 3]`)
-- `list.repeat` (one item repeated n times)
+- static declaration, eg. **`let items = [1, 2, 3]`**
+  - `list.new` list with no starting items
+  - `list.wrap` list with one starting item
+- **`list.range`** inclusive, eg. `list.range(1, 3) --> [1, 2, 3]`
+- **`list.repeat`** one item repeated n times
 
-**Look at leading and trailing values**
+**Work leading and trailing values**
 
-- `list.prepend` (prefer pattern matching [a, ..rest] =)
-- `list.rest` (prefer pattern matching [first, ..rest] ->)
-- `list.first` (first item, error on empty)
-- `list.last` (last item, error on empty)
+- prepend with **`let updated = [element, ..items]`**, or with `list.prepend`
+- split with **`[first, ..rest] -> ...`**, or with `list.first` / `list.rest`
+  - `list.last` gets the last item, traversing the whole list to do so
 
-*note: all lists are linked lists
-- there's no "get by index".
-- prefixing is more performant.
-- this is functional land baby.
+**Bisect into portions:**
 
-**Bisect at some index:**
+- **`list.split`** bisect at an index
+  - `list.take` gets just the front portion; `|> list.take(5)` is the first five elements
+  - `list.drop` gets just the back, by skipping the front; `|> list.drop(2)` is all elements except the first two. 
+- **`list.split_while`** bisect where a condition first fails, often useful on sorted lists
+  - `list.take_while` gets just the front portion
+  - `list.drop_while` gets just the back portion
 
-- `list.take` (items up to index)
-- `list.drop` (inverse of "take", the portion after index)
-- `list.split` (front and back halves, split at index)
-
-**Bisect by some criteria:**
-
-- `list.take_while` (items while condition holds, a prefix)
-- `list.drop_while` (the back half)
-- `list.split_while` (both halves)
+*note: on a **sorted** list of appointments, compare:*
+- *`|> list.drop_while(event.has_passed)` skips ahead to get all the upcoming ones*
+- *`|> list.find(event.in_future)` gets the next one*
 
 ## Query a list:
 
@@ -58,10 +59,10 @@
 
 **Merging lists element-by-element**
 
-- `list.zip` (merge elementwise into tuples)
- - `list.map2` (merge elementwise with any func)
- - `list.strict_zip` (enforce list lengths are the same)
-- `list.unzip` (list of tuples back into two lists)
+- **`list.zip`** merge elementwise by wrapping in tuples: `list.zip([a, b], [1, 2]) ==>> [#(a, 1), #(b, 2)]`
+  - `list.strict_zip` special case, enforcing equal list lengths, otherwise trailing elements are ignored
+  - `list.unzip` reverse, split a list of tuples into two lists
+- **`list.map2`** merge elementwise with any function, say adding or concatenating each pair
 
 **Rearrange: keeping same structure**
 
@@ -135,5 +136,3 @@ All of these operate on a list of #(key, val) tuples. These are useful for Erlan
 - `list.key_find` (first val where key matches)
 - `list.key_pop` (same as above, also returns transformed list)
 - `list.key_set` (insert a key and value)
-
-[todo: gleam linked list meme]

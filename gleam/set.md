@@ -24,7 +24,7 @@ list.fold(cars, set.new(), fn(acc, car) { set.insert(acc, car.plate_id) })
 - **`set.is_disjoint`** do these two sets have nothing in common?
 - **`set.is_subset`** is this set is entirely contained by...?
 
-## Update Elements
+## Modify
 
 
 |from a set -> |to Add...|to Remove...|to keep only items in...|

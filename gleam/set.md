@@ -12,7 +12,7 @@ Like with Gleam dicts, these support two patterns of initialization:
 // build the list first
 list.map(cars, fn(car) { car.plate_id }) |> set.from_list
 
-// fold into an empty dict
+// fold into an empty set
 list.fold(cars, set.new(), fn(acc, car) { set.insert(acc, car.plate_id) })
 ```
 

@@ -1,3 +1,4 @@
+# gleam/float
 ## Built-ins
 
 Floats come with the language, eg. `1.5 +. 1.5` and `5.0 >. 3.13`.
@@ -23,8 +24,8 @@ Generally, prefer builtin "dot" operators like `+.` and `>.`
 - **`float.exponential`** **`float.logarithm`** with respect to Euler's contstant: `e^x` and `ln(x)`
 
 ## Comparisons
-- **`float.compare`** yields an ordering (`Lt` `Gt` `Eq`), see [link ordering](https://github.com/CloserToTheCenter/GleamReference/blob/main/gleam/order.md))
-  - **`float.loosely_compare`** **`float.loosely_equals`** consider floats equal within a provided tolerance
+- **`float.compare`** yields an ordering (`Lt` `Gt` `Eq`), see [gleam/order](https://github.com/CloserToTheCenter/GleamReference/blob/main/gleam/order.md)
+  - `float.loosely_compare` `float.loosely_equals` consider floats equal within a provided tolerance
 - **`float.max`** and **`float.min`** of two distinct floats
 
 ## Constrain

@@ -9,13 +9,13 @@
 **Custom Types -over- boolean flags**
 
 ```Gleam
-Account(role: Teacher)           // prefered over "is_teacher: Bool"
+Account(role: Teacher)    // prefered over "is_teacher: Bool"
 ```
 
 **Pattern Matching -over- explicit equality**
 
 ```Gleam
-case eggs {             // preferred over "case eggs == 12 { ... }"
+case eggs {               // preferred over "case eggs == 12 { ... }"
   12 -> "full dozen"
   _ -> "not quite"
 }
@@ -51,8 +51,13 @@ Based on a condition guards returns 1 of 2 values, either:
 The rest of the function is executed only when proper -
 thereby it is guarded from unsafe or uneeded execution.
 
-```
+```Gleam
+// in Gleam
 use <- bool.guard(when: condition, return: 0)
+```
+
+```Java
+// same thing in an imperative language
 if (condition) { return 0; }
 ```
 

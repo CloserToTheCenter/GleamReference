@@ -1,4 +1,4 @@
-# I want to...
+# gleam/set
 
 ## Create
 
@@ -26,17 +26,12 @@ list.fold(cars, set.new(), fn(acc, car) { set.insert(acc, car.plate_id) })
 
 ## Update Elements
 
-||to Add|to Remove|
-|-|-|-|
-|one item:| **`set.insert`** | **`set.delete`** |
-|another set:| **`set.union`** | **`set.difference`** |
-|another list:| **`set.drop`** | **`set.take`** |
+
+|from a set -> |to Add...|to Remove...|to keep only items in...|
+|-|-|-|-|
+|one item:| **`set.insert`** | **`set.delete`** |-|
+|another set:| **`set.union`** | **`set.difference`** |**`set.intersection`**|
+|another list:|-| **`set.drop`** | **`set.take`** |
   
-And **`set.filter`** lets you remove items on some criteria. 
-
-## Combine Two Sets
-
-- **`set.union`** in either
-- **`set.intersection`** in both
-- **`set.difference`** in the first, but not the second
-- **`set.symmetric_difference`** in exactly one but not both
+- **`set.filter`** remove items on some criteria
+- **`set.symmetric_difference`** in one of two sets, but not both

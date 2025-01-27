@@ -2,15 +2,14 @@
 
 A `Result` is the outcome of a function call, either `Ok(value)` if it went smoothly or `Error(Nil)` / `Error(Message)` otherwise.
 
-*tangent: It's okay to `panic` or `assert` in a scrappy Gleam script, but when writing a library for many people to use, 
-it is strongly encouraged to indicate errors in calling functions with the proper `Result`. If this seems hard to manage,
-ask the Gleam community for help.*
+*note: It's okay to `panic` or `assert` in a scrappy Gleam script, but when writing a library for the community to use, 
+it is proper to indicate all errors with `Result`s instead.*
 
-*tangent: Most of the time, you want `Error(Nil)` with no message.*
+*note: Most of the time, you want `Error(Nil)` with no message.*
 
 ## Exit on Error
 
-**`result.try`** / **`result.then`** Short-circuit on error, otherwise run a continuation. Both names refer to the same function:
+**`result.try`** (alias `result.then`) Short-circuit on error, otherwise run a continuation. Both names refer to the same function:
 
 ```Gleam
 // "result.try" intended for use statement
@@ -24,7 +23,7 @@ operation_that_might_fail()
 
 - *Special Case: `result.try_recover` lets you see a potential error value*
 
-These functions internally call **`result.flatten`**, condensing a stack of nested `Ok(Ok(foo))` to just `Ok(foo)`. Otherwise the result layers would pile up when chaining them together. 
+These rely on **`result.flatten`** to condense nested `Ok(Ok(foo))` to just `Ok(foo)`. Otherwise the "Okays" would pile up from multiple successful `result.then` exit-on-error calls. 
  
 
 ## Default on Error
@@ -42,7 +41,7 @@ If you start to chain these, consider getting the first "okay" item of several w
 
 Alternate versions (`option.lazy_or`, `option.lazy_unwrap`) wrap the fallback in a callback, evaluating it only when needed.
 
-For getting the `Error` message, instead of defaulting on `Errors`, the following can be used:
+For extracting the `Error` message, the following can be used:
   - `result.unwrap_error` gets only the "Error" message
   - `result.unwrap_both` extracts either message, whether on an `Ok` or an `Error`
 
@@ -57,14 +56,12 @@ For getting the `Error` message, instead of defaulting on `Errors`, the followin
 
 ## Edit in Place
 
-*Often these can be avoided by "sanitizing early": unwrapping to either values or error messages before continuing. * 
+*Where possible, prefer "unwrapping" the result early and operating directly on the value.* 
 
-- **`result.replace_error`** Updates an error message, ignoring Okays.
-  - `result.replace` Updates an okay value, ignoring Errors.
+- **`result.map`** Transform the value of an `Ok` result "under cover"; does nothing to an `Error`. Idiom is sometimes called "railroad programming".
+- **`result.replace`** Sets the `Ok` value directly; does nothing to an `Error`.
+- `result.map_error` / `result.replace_error` Same as the above, but transforming/replacing the `Error` message instead.
   - `result.nil_error` Deprecated, special case of `|> result.replace_error(Nil)`
- 
-**`result.map_error`** and **`result.map`** work similar to `result.replace_error`, except transform via a function, rather than replacing directly with a value.
-
 
 ## Check Directly
 

@@ -1,5 +1,5 @@
 
-# gleam.bool
+# gleam/bool
 
 - `True`
 - `False` 
@@ -31,7 +31,7 @@ case eggs {               // preferred over "case eggs == 12 { ... }"
 
 These always evaluate both sides.
 
-The built-in operators short-circuit: `&&` for "and", `||` for "or".
+Built-in operators short-circuit: `&&` for "and", `||` for "or".
 
 **Negation**
 

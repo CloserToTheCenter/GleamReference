@@ -1,14 +1,15 @@
+# gleam/int
 ## Built Ins
 
-Integers come baked into the language, eg. `3 + 3` and `5 > 3 - 2`.
+Integers come baked into the language, eg `3 + 3` and `5 > 3 - 2`.
 
-- For operators, like (`/`, `/.`, `%`), dividing by 0 yields 0 to keep it simple.
+- For operators, like (`/`, `/.`, `%`), division by 0 yields 0 to keep it simple.
   - Functions, like `int.divide`, have divsion by 0 as an error.
 - Floats use a whole second set of operators, like "+."
 
 ## Parse to-and-from Int
 
-- **`int.parse`** **`int.to_string`** Convert back-and-forth say `12 <--> "12"`, the parsing can error.
+- **`int.parse`** **`int.to_string`** Convert back-and-forth say `12 <--> "12"`; the parsing can error.
 - **`int.to_float`** Converts to float, convert back with `float.round` or `float.truncate`.
 
 Gleam supports numeric bases from 2-36:

@@ -1,32 +1,38 @@
-# Uncertain Results
+# gleam/result
 
-A `Result` is the outcome of a function call, either `Ok(value)` if it went smoothly or `Error(Nil)` / `Error(Message)` otherwise.
+- `Ok`
+- `Error` if something went wrong.
 
-*note: It's okay to `panic` or `assert` in a scrappy Gleam script, but when writing a library for the community to use, 
-it is proper to indicate all errors with `Result`s instead.*
+A result holds an interior value: like `5` in `Ok(5)`, or `Nil` in `Error(Nil)`.
 
-*note: Most of the time, you want `Error(Nil)` with no message.*
+*note: When writing production Gleam, it is proper to use `Result` for indicating errors, rather than crashing with `panic` or `assert`.*
 
-## Exit on Error
+## Update in Place
 
-**`result.try`** (alias `result.then`) Short-circuit on error, otherwise run a continuation. Both names refer to the same function:
+||for just `Ok` results...|for just `Error` results..|
+|-|-|-|
+|Upsert the value with some function |**`result.map`**|`result.map_error`|
+|Overwrite the value |`result.replace`|**`result.replace_error`***|
+
+
+- **`result.flatten`** Condense nested `Ok`s: `Ok(Ok(foo))` -> `Ok(foo)`.
+- **`result.try`** Map a function that returns a result, then flatten the outcome to remove potential nesting.
+  - `result.try_recover` special case, lets you see any error value if present.
+  - `result.then` alias for `result.try`, better ergonomics for inline usage:
 
 ```Gleam
-// "result.try" intended for use statement
-use val <- result.try(operation_that_might_fail())
-next_step(val)
+// result.try lets you "early return" on error
+use val <- result.try(query())
+process(val)
 
-// "result.then" intended for inline use 
-operation_that_might_fail()
-|> result.then(next_step)
+// result.then looks better inline, but is the exact same function
+query() |> result.then(process)
 ```
+\* *`result.nil_error` is deprecated, a special case of `|> result.replace_error(Nil)`*
 
-- *Special Case: `result.try_recover` lets you see a potential error value*
+## Extract value...
 
-These rely on **`result.flatten`** to condense nested `Ok(Ok(foo))` to just `Ok(foo)`. Otherwise the "Okays" would pile up from multiple successful `result.then` exit-on-error calls. 
- 
-
-## Default on Error
+**From an Ok**
 
 ```Gleam
 //          this if okay  ~ or ~> default
@@ -34,16 +40,14 @@ result.unwrap(  Ok(5),       or:    0 )   --> 5
 result.or( Error(Nil),       or: Ok(0))   --> Ok(0)
 ```
 
-- **`result.unwrap`** gets the direct interior value (say `5`).
-- **`result.or`** picks one of two results to return
+- **`result.unwrap`** gets the interior value. *(here an `Int`)*
+- **`result.or`** picks one of two results to return. *(here a `Result(Int, Nil)`)*
 
-If you start to chain these, consider getting the first "okay" item of several with: `|> list.find(result.is_okay)`
+Alternate versions (`option.lazy_or`, `option.lazy_unwrap`) generate the default value by running a callback.
 
-Alternate versions (`option.lazy_or`, `option.lazy_unwrap`) wrap the fallback in a callback, evaluating it only when needed.
-
-For extracting the `Error` message, the following can be used:
-  - `result.unwrap_error` gets only the "Error" message
-  - `result.unwrap_both` extracts either message, whether on an `Ok` or an `Error`
+**From an Error**
+  - `result.unwrap_error` gets the interior value for an `Error`, or returns the default for an `Ok`.
+  - `result.unwrap_both` extracts either message, whether `Ok` or `Error`. Requires the types match, say `Result(a, a)`.
 
 ## Bulk Unwraps
 
@@ -54,20 +58,11 @@ For extracting the `Error` message, the following can be used:
   - `result.values([Error(Nil), Ok("a")])  --> ["a"]`
 - **`result.partition`** Splits to two unwrapped lists: "okay values" and "error messages".
 
-## Edit in Place
-
-*Where possible, prefer "unwrapping" the result early and operating directly on the value.* 
-
-- **`result.map`** Transform the value of an `Ok` result "under cover"; does nothing to an `Error`. Idiom is sometimes called "railroad programming".
-- **`result.replace`** Sets the `Ok` value directly; does nothing to an `Error`.
-- `result.map_error` / `result.replace_error` Same as the above, but transforming/replacing the `Error` message instead.
-  - `result.nil_error` Deprecated, special case of `|> result.replace_error(Nil)`
-
 ## Check Directly
 
 Gleam has two functions for classifying results directly, but they are less frequently used.
 
-Prefer pattern matching for routing results:
+Prefer pattern matching:
 
 ```Gleam
 case outcome {
@@ -76,7 +71,7 @@ case outcome {
 }
 ```
 
-Prefer using other builtins, like `result.values` rather than calling `list.filter(result.is_ok) |> list.map(...)`, or `result.try` over something with `bool.guard`.
+Prefer builtins, like `result.try` for an early-return without needing to construct something with `bool.guard`.
 
 If you still need them, you can call or pass along the functions **`result.is_ok`** and **`result.is_error`**.
 

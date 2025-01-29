@@ -3,13 +3,15 @@
 - `Ok`
 - `Error` if something went wrong.
 
-A result holds an interior value: like `5` in `Ok(5)`, or `Nil` in `Error(Nil)`.
+A result holds a value: like the `5` in `Ok(5)`, or `Nil` in `Error(Nil)`.
+
+A result's type is composed of the values it could possibly hold, like `Result(Int, Nil)` for the example above.
 
 *note: When writing production Gleam, it is proper to use `Result` for indicating errors, rather than crashing with `panic` or `assert`.*
 
 ## Update in Place
 
-||for just `Ok` results...|for just `Error` results..|
+||for just `Ok` results...|for just `Error` results...|
 |-|-|-|
 |Upsert the value with some function |**`result.map`**|`result.map_error`|
 |Overwrite the value |`result.replace`|**`result.replace_error`***|
@@ -22,11 +24,11 @@ A result holds an interior value: like `5` in `Ok(5)`, or `Nil` in `Error(Nil)`.
 
 ```Gleam
 // result.try lets you "early return" on error
-use val <- result.try(query())
-process(val)
+use val <- result.try(func1())
+func2(val)
 
 // result.then looks better inline, but is the exact same function
-query() |> result.then(process)
+func1() |> result.then(func2)
 ```
 \* *`result.nil_error` is deprecated, a special case of `|> result.replace_error(Nil)`*
 
@@ -43,7 +45,7 @@ result.or( Error(Nil),       or: Ok(0))   --> Ok(0)
 - **`result.unwrap`** gets the interior value. *(here an `Int`)*
 - **`result.or`** picks one of two results to return. *(here a `Result(Int, Nil)`)*
 
-Alternate versions (`option.lazy_or`, `option.lazy_unwrap`) generate the default value by running a callback.
+Alternate versions (`option.lazy_or`, `option.lazy_unwrap`) generate the default value only if needed, by running the provided function.
 
 **From an Error**
   - `result.unwrap_error` gets the interior value for an `Error`, or returns the default for an `Ok`.

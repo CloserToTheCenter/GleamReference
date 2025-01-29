@@ -1,7 +1,7 @@
 
 *Gleam lists are linked lists:*
 - *Prefixing is cheaper than postfixing. One idiom: prefix many times, then reverse at the end.*
-- *There's no lookup by index. You can write one but it will be slow. Dictionaries are better for lookups.*
+- *There's no lookup by index. If you need frequent lookups, consider using a dictionary.*
 - *The benefits: everything immutable AND cheap to split of leading elements with pattern matching.*  
 
 ## Have some items:

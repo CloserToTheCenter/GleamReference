@@ -46,9 +46,9 @@
 - `list.find` (get me the first element that...)
 - `list.pop` (same as find, but also returns list with the found element removed)
 
-**Are they all True? False?**
+**What's the biggest? Smallest?**
 
-- `list.all` / `list.any` (do {all/any} items fulfill {criteria}?)
+- `list.min` / `list.max` pass in a comparison function, like `int.compare`
 
 ## Squish Values Around:
 **Merging lists end-to-end**
@@ -68,7 +68,7 @@
 
 - `list.reverse`
 - `list.shuffle`
-- `list.sort` (takes a comparison func like int.compare)
+- `list.sort` / `list.max` takes comparison funcs like int.compare. See [orderings](https://github.com/CloserToTheCenter/GleamReference/edit/main/gleam/order.md) for more.
 
 **Rearrange: by changing array boundaries**
 

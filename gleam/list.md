@@ -64,13 +64,13 @@
   - `list.unzip` reverse, split a list of tuples into two lists
 - **`list.map2`** merge elementwise with any function, say adding or concatenating each pair
 
-**Rearrange: keeping same structure**
+**Re-order in place**
 
 - `list.reverse`
 - `list.shuffle`
-- `list.sort` / `list.max` takes comparison funcs like int.compare. See [orderings](https://github.com/CloserToTheCenter/GleamReference/edit/main/gleam/order.md) for more.
+- `list.sort` / `list.max` take comparison funcs like int.compare. See [orderings](https://github.com/CloserToTheCenter/GleamReference/blob/main/gleam/order.md#items-increasing) for more.
 
-**Rearrange: by changing array boundaries**
+**Re-group into new boundaries**
 
 - `list.transpose` (flips rows to cols, and cols to rows)
 - `list.interleave` (take 1 card at a time from alternating piles)

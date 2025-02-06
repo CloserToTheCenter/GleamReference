@@ -36,8 +36,8 @@ list.fold(cars, dict.new(), fn(acc, car) {
 - **`dict.filter`** remove on some condition of both key and value
 
 ## Combine Dictionaries
-- **`dict.merge`** add items from one dict to another, "end-to-end"
-- **`dict.combine`** combine values with some function, "key-to-matching-key"
+- **`dict.merge`** concat two dictionaries together, "end-to-end"
+- **`dict.combine`** combine values elementwise, "key-to-matching-key"
 
 ## Iterate Through
 - **`dict.map_values`** update each value in a dict, based on current key and value

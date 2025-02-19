@@ -24,9 +24,9 @@ Can check first with `bit_array.is_utf8`
 
 |to string|from string|
 |-|-|
-|`base16_decode`|base16_encode`|
-|`base64_decode`|base64_encode`|
-|`base64_url_decode`|base64_url_encode`|
+|`base16_decode`|`base16_encode`|
+|`base64_decode`|`base64_encode`|
+|`base64_url_decode`|`base64_url_encode`|
 
 ## Helpers
 

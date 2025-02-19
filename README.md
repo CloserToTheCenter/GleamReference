@@ -1,8 +1,6 @@
 # Gleam Cheatsheets
 
-## This is
-- A Work-In-Progress
-- A searchable listing of:
+## This is a listing of
   - Common problems or tasks
   - The standard library features best suited to each task
 

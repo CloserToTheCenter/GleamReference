@@ -1,4 +1,4 @@
-# Strings!
+# gleam/string
 
 ## Format 
 - use string concat operator **`<>`**, or

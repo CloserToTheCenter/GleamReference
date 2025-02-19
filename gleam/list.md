@@ -14,13 +14,13 @@
 - **`list.range`** inclusive, eg. `list.range(1, 3) --> [1, 2, 3]`
 - **`list.repeat`** one item repeated n times
 
-**Work leading and trailing values**
+**Leading and trailing values**
 
 - prepend with **`let updated = [element, ..items]`**, or with `list.prepend`
 - split with **`[first, ..rest] -> ...`**, or with `list.first` / `list.rest`
   - `list.last` gets the last item, traversing the whole list to do so
 
-**Bisect into portions:**
+**Bisect into portions**
 
 - **`list.split`** bisect at an index
   - `list.take` gets just the front portion; `|> list.take(5)` is the first five elements
@@ -88,13 +88,13 @@
 **View possible Orderings**
 
 - `list.combinations` (all orderings of n elements)
- - `list.combination_pairs` (special case n=2)
- - `list.permutations` (special case using every element)
+  - `list.combination_pairs` (special case n=2)
+  - `list.permutations` (special case using every element)
 
 **View through Sliding Windows**
 
 - `list.window` (for stuff like sliding averages)
- - `list.window_by_2` (special case n=2)
+  - `list.window_by_2` (special case n=2)
 
 ## Transform a list with an external function:
 **For each element...**
@@ -105,11 +105,11 @@
 
 **Fold up a list**
 
-- `list.fold` (combine one element at a time towards a final goal)
+- **`list.fold`** combine one element at a time towards a final goal
   - `list.fold_right` (starting at the other end)
   - `list.fold_until` (possibly stopping early)
-  - see `int.sum` for an easy way to add ints*
-- `list.reduce` (no given start, uses first item instead, can error)
+  - see `int.sum` for an easy way to add ints
+- `list.reduce` (no given start, uses first item instead, error on empty)
 - `list.scan` (returns the intermediate values in a list)
 
 **With indices visible as I go**

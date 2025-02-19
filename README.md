@@ -1,8 +1,9 @@
-# Gleam Cheatsheets
+# Gleam Thesaurus
 
-## This is a listing of
-  - Common problems or tasks.
-  - The standard library features best suited to each task.
+## This is
+  - A way to find the function you need.
+  - A guide to the Gleam standard library full of synonyms and alternatives.
+
 
 ## This is not
 - An exhaustive Gleam reference document. It explains the *why* and *where* of using standard library functions, but does not detail each function's full behavior.

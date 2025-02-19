@@ -1,11 +1,12 @@
 # Gleam Cheatsheets
 
 ## This is a listing of
-  - Common problems or tasks
-  - The standard library features best suited to each task
+  - Common problems or tasks.
+  - The standard library features best suited to each task.
 
 ## This is not
 - An exhaustive Gleam reference document. It explains the *why* and *where* of using standard library functions, but does not detail each function's full behavior.
+  - Supplement with function tooltips in your editor.
 - A tutorial to follow. Though parts may feel like a tutorial, these sheets are designed to be referenced as needed.
 
 ## Target Audience

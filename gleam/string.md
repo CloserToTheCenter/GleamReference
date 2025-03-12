@@ -26,6 +26,7 @@
 ## What's at either end?
 - **`string.first`** **`string.last`** gets a grapheme, or errors on empty string
 - **`string.starts_with`** **`string.ends_with`** checks substring prefix/suffix
+- **`"Hello, " <> name -> todo`** can pattern match on expected prefixes
 
 ## Split and (re-)Join
 - **`string.split`** or **`string.join`** on a delimeter

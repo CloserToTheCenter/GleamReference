@@ -2,13 +2,14 @@
 
 ## Arbitrary Objects
 
-Use **`io.debug`** to print an object's representation. This uses the same formatting found in Gleam's error messages.
+Use the keyword **`echo`** to assist during debugging. It uses the same formatting as Gleam's error messages.
 
 ```Gleam
-io.debug(list.range(1, 3))   // prints -> [1, 2, 3]
+echo list.range(1, 3)   // prints -> [1, 2, 3]
 ```
 
-*tangent: `string.inspect` does the formatting, so `io.debug(x)` is equivalent to `io.println(string.inspect(x))`*
+- **`string.inspect`** does the formatting, so `echo x` is equivalent to `echo string.inspect(x)`
+- `io.debug` does the same formatting as `echo`, just without the line number
 
 ## Strings
 
@@ -30,7 +31,7 @@ As they return their input unchanged, `io` functions can be added anywhere in an
 ```Gleam
 [1, 2]
 |> list.map(fn(x) { x + 1 })
-|> io.debug               // prints "[2, 3]"
+|> io.println               // prints "[2, 3]"
 |> list.map(fn(x) { x * 2 })
-|> io.debug               // prints "[4, 6]"
+|> echo                    // prints "[4, 6]"
 ```

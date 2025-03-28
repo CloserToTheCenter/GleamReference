@@ -5,7 +5,7 @@
   - **`string.append`** two strings together
   - **`string.join`** many strings together
     - variant **`string.concat`** has no delimeter
-- **`string.inspect`** to a debuggable format, like what's used by `io.debug`
+- **`string.inspect`** to a debuggable format, like what `echo` prints
 
 ## Conversions
 - `int.parse` or the other int functions, see [link](https://github.com/CloserToTheCenter/GleamReference/blob/main/gleam/int.md#parse-to-and-from-int)

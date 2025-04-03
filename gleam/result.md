@@ -37,7 +37,7 @@ func1() |> result.then(func2)
 **From an Ok**
 
 ```Gleam
-//          this if okay  ~ or ~> default
+//        this if okay  ~ or ~> default
 result.unwrap(  Ok(5),       or:    0 )   --> 5
 result.or( Error(Nil),       or: Ok(0))   --> Ok(0)
 ```

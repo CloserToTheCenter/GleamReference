@@ -44,7 +44,6 @@
 - `list.count` (how many items meet {criteria}?)
 - `list.contains` (is this one element present...?)
 - `list.find` (get me the first element that...)
-- `list.pop` (same as find, but also returns list with the found element removed)
 
 **What's the biggest? Smallest?**
 
